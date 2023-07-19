@@ -36,7 +36,7 @@ services:
      TZ: 'Asia/Tokyo'
 
    # 起動時のコマンド
-   command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+   command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --port 14406 
    # ディレクトリ同期。設定ファイルとMySQLのデータが保存される場所を同期している。コンテナは基本的に起動時に変更されてもコンテナ自体が止まるとデータが消えてしまうため、保存しておきたいものはホストマシンと同期しておく必要がある。
    volumes:
      - ./docker/db/data:/var/lib/mysql
@@ -45,7 +45,7 @@ services:
    ports:
      - 14406:3306
    # 3306以外の数字を使う場合、起動時にコマンドが必要となる
-   command: --port 14406 
+   # command: --port 14406 
 
 # ----------------------------------
 # phpmyadminを動かすコンテナ
